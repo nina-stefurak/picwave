@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import FirebaseContext from "../context/firebase";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Login() {
     const history = useHistory();
@@ -48,7 +49,7 @@ export default function Login() {
                     border border-gray-primary rounded mb-2"
                     onChange={({ target }) => setPassword(target.value)}/>
                     <button disabled={isInvalid} type="submit" 
-                    className={`bg-blue-500 text-white w-full rounded h-8 font-bold 
+                    className={`bg-blue-medium text-white w-full rounded h-8 font-bold 
                     ${isInvalid && 'opacity-50'}`
                     }>
                         Log In
@@ -57,16 +58,13 @@ export default function Login() {
             </div>
             <div className="flex justify-center items-center flex-col w-full bg-white p-4 
             border border-gray-primary rounded mb-2">
-                <p className="text-sm">Don't have an account?{``}
-                
+                <p className="text-sm">Don't have an account? {``}
+                <Link to="/signup" className="font-bold text-blue-medium">
+                    Sign up
+                </Link>
                 </p>
             </div>
           </div>
         </div>
     );
 }
-// TODO: add to tailwind config
-// bg-blue-medium -> hex values
-// text-red-primary -> hex values
-// text-gray-base -> hex values
-// border-gray-primary -> hex values
