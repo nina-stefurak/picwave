@@ -20,7 +20,12 @@ export default function Login() {
 
     return (
         <div className="container flex mx-auto max-w-screen-md items-center h-screen">
-            <p>hello</p>
+            <div className="flex w-3/5">
+                <img src="/images/profile-phone.png" alt="Phone with profile app" />
+            </div>
+            <div className="flex flex-col w-2/5">
+                <p>form</p>
+            </div>
         </div>
     );
 }
