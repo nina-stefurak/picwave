@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import FirebaseContext from "../context/firebase";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import * as ROUTES from '../constants/routes';
+import { doesUsernameExist } from "../services/firebase";
 
 export default function SignUp() {
     const history = useHistory();
@@ -19,9 +20,39 @@ export default function SignUp() {
     const handleSignup = async (event) => {
         event.preventDefault();
 
-        // try {
+        const usernameExists = await doesUsernameExist(username);
+        if (!usernameExists.length) {
+            try {
+                const createdUserResult = await firebase
+                .auth()
+                .createUserWithEmailAndPassword(emailAddress, password);
 
-        // } catch (error) {}
+                // authentication
+                await createdUserResult.user.updateProfile({
+                    displayName: username
+                });
+
+                //firebase user collection (create a document)
+                await firebase.firestore().collection('users').add({
+                    userId: createdUserResult.user.uid,
+                    username: username.toLowerCase(),
+                    fullName,
+                    emailAddress: emailAddress.toLowerCase(),
+                    following: [],
+                    followers: [],
+                    dateCreated: Date.now()
+                });
+
+                history.push(ROUTES.DASHBOARD);
+            } catch (error) {
+                setFullName('');
+                setEmailAddress('');
+                setPassword('');
+                setError(error.message);
+            }
+        } else {
+            setError('That username is already exist, please try another.');
+        }
     };
 
     useEffect(() => {
@@ -89,7 +120,7 @@ export default function SignUp() {
             <div className="flex justify-center items-center flex-col w-full bg-white p-4 
             border border-gray-primary rounded mb-2">
                 <p className="text-sm">Have an account? {``}
-                <Link to="/login" className="font-bold text-blue-medium">
+                <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium">
                     Log In
                 </Link>
                 </p>
