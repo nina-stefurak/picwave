@@ -1,11 +1,11 @@
-// NOTE:'JbyN9yByvqMMCYYQSs1i9hnH4uU2'
+// NOTE:'V8xVkn47IpToiRd6sUOuYtqSltc2'
 export function seedDatabase(firebase) {
     const users = [
       {
-        userId: 'JbyN9yByvqMMCYYQSs1i9hnH4uU2',
+        userId: 'V8xVkn47IpToiRd6sUOuYtqSltc2',
         username: 'soniacat',
         fullName: 'Sonia cat',
-        emailAddress: 'soniacat@gmail.com',
+        emailAddress: 'soniacat@gmail.com', //password 123456
         following: ['2'],
         followers: ['2', '3', '4'],
         dateCreated: Date.now()
@@ -13,28 +13,28 @@ export function seedDatabase(firebase) {
       {
         userId: '2',
         username: 'raphael',
-        fullName: 'Raffaello Sanzio da Urbino',
-        emailAddress: 'raphael@sanzio.com',
+        fullName: 'Raphael Do ',
+        emailAddress: 'raphael@gmail.com',
         following: [],
-        followers: ['JbyN9yByvqMMCYYQSs1i9hnH4uU2'],
+        followers: ['V8xVkn47IpToiRd6sUOuYtqSltc2'],
         dateCreated: Date.now()
       },
       {
         userId: '3',
-        username: 'dali',
-        fullName: 'Salvador Dalí',
-        emailAddress: 'salvador@dali.com',
+        username: 'sali',
+        fullName: 'Sali Smith',
+        emailAddress: 'sali.smith@gmail.com',
         following: [],
-        followers: ['JbyN9yByvqMMCYYQSs1i9hnH4uU2'],
+        followers: ['V8xVkn47IpToiRd6sUOuYtqSltc2'],
         dateCreated: Date.now()
       },
       {
         userId: '4',
-        username: 'orwell',
-        fullName: 'George Orwell',
-        emailAddress: 'george@orwell.com',
+        username: 'snowball',
+        fullName: 'Snow Ball',
+        emailAddress: 'snowball@gmail.com',
         following: [],
-        followers: ['JbyN9yByvqMMCYYQSs1i9hnH4uU2'],
+        followers: ['V8xVkn47IpToiRd6sUOuYtqSltc2'],
         dateCreated: Date.now()
       }
     ];
