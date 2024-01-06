@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import UserContext from '../context/user';
-import { getUserByUserId } from "../services/firebase";
+import { getPhotos, getUserByUserId } from "../services/firebase";
 
 export default function usePhotos() {
   const [photos, setPhotos] = useState(null);
@@ -16,7 +16,7 @@ export default function usePhotos() {
     console.log('following', following);
    // проверка, подписан ли юзер на кого-то
     if (following.length > 0) {
-        followedUserPhotos = await getTimelinePhotos(userId, following);
+        followedUserPhotos = await getPhotos(userId, following);
     }
 
     followedUserPhotos.sort((a, b) => b.dateCreated - a.dateCreated);
