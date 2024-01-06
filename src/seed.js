@@ -39,9 +39,29 @@ export function seedDatabase(firebase) {
       }
     ];
   
-    for (let k = 0; k < users.length; k++) {
-      firebase.firestore().collection('users').add(users[k]);
-    }
+    firebase.firestore().collection('users').limit(1).get()
+    .then(snapshot => {
+      if (snapshot.empty) {
+        // The 'users' collection is empty
+        console.log("'users' collection is empty. Adding users...");
+  
+        for (let k = 0; k < users.length; k++) {
+          firebase.firestore().collection('users').add(users[k])
+            .then(() => console.log(`User ${k} added`))
+            .catch(error => console.error("Error adding user: ", error));
+        }
+      } else {
+        // The 'users' collection does not exist
+        console.log("'users' collection already initialized.");
+      }
+    })
+    .catch(error => console.error("Error checking collection: ", error));
+
+    firebase.firestore().collection('photos').limit(1).get()
+    .then(snapshot => {
+      if (snapshot.empty) {
+        // The 'photos' collection is empty
+        console.log("'photos' collection is empty. Adding users...");
   
     for (let i = 1; i <= 5; ++i) {
       firebase
@@ -55,12 +75,12 @@ export function seedDatabase(firebase) {
           likes: [],
           comments: [
             {
-              displayName: 'dali',
-              comment: 'Love this place, looks like my animal farm!'
+              displayName: 'sali',
+              comment: 'Love this photo!'
             },
             {
-              displayName: 'orwell',
-              comment: 'Would you mind if I used this picture?'
+              displayName: 'snowball',
+              comment: 'Hi, cool picture!'
             }
           ],
           userLatitude: '40.7128°',
@@ -68,4 +88,11 @@ export function seedDatabase(firebase) {
           dateCreated: Date.now()
         });
     }
+      } else {
+        // The 'photos' collection does not exist
+        console.log("'photos' collection already initialized.");
+      }
+    })
+    .catch(error => console.error("Error checking collection: ", error));
+
   }

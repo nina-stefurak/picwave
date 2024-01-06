@@ -2,6 +2,7 @@ import Firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
+import { seedDatabase } from '../seed';
 
 const config = {
     apiKey: 'AIzaSyDO7-jwITVu0zXhkiMvheg-8WcWWvXTkZE',
@@ -13,6 +14,13 @@ const config = {
 };
 
 const firebase = Firebase.initializeApp(config);
+var db = firebase.firestore();
+if (location.hostname === "localhost") {
+  db.useEmulator("127.0.0.1", 8080);
+}
+seedDatabase(firebase);
 const { FieldValue } = Firebase.firestore;
+
+
 
 export { firebase, FieldValue };
