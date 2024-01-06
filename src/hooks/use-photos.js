@@ -19,9 +19,11 @@ export default function usePhotos() {
         followedUserPhotos = await getPhotos(userId, following);
     }
 
-    followedUserPhotos.sort((a, b) => b.dateCreated - a.dateCreated);
+    followedUserPhotos.sort((a, b) => b.dateCreated - a.dateCreated)
+    .forEach(photo => {
+      console.log(JSON.stringify(photo));
+    });
     setPhotos(followedUserPhotos);
-
 
   }
    getTimelinePhotos();

@@ -7,15 +7,15 @@ export function seedDatabase(firebase) {
         fullName: 'Sonia cat',
         emailAddress: 'soniacat@gmail.com', //password 123456
         following: ['2'],
-        followers: ['2', '3', '4'],
+        followers: ['2'],
         dateCreated: Date.now()
       },
       {
         userId: '2',
-        username: 'raphael',
-        fullName: 'Raphael Do ',
-        emailAddress: 'raphael@gmail.com',
-        following: [],
+        username: 'taylor',
+        fullName: 'Taylor Do',
+        emailAddress: 'taylor@gmail.com',
+        following: ['V8xVkn47IpToiRd6sUOuYtqSltc2'],
         followers: ['V8xVkn47IpToiRd6sUOuYtqSltc2'],
         dateCreated: Date.now()
       },
@@ -63,14 +63,14 @@ export function seedDatabase(firebase) {
         // The 'photos' collection is empty
         console.log("'photos' collection is empty. Adding users...");
   
-    for (let i = 1; i <= 5; ++i) {
+    for (let i = 1; i <= 3; ++i) {
       firebase
         .firestore()
         .collection('photos')
         .add({
           photoId: i,
           userId: '2',
-          imageSrc: `/images/users/raphael/${i}.jpg`,
+          imageSrc: `/images/users/taylor/${i}.jpg`,
           caption: 'Saint George and the Dragon',
           likes: [],
           comments: [
