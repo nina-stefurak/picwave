@@ -15,10 +15,10 @@ const config = {
 
 const firebase = Firebase.initializeApp(config);
 var db = firebase.firestore();
-if (location.hostname === "localhost") {
-  db.useEmulator("127.0.0.1", 8080);
-}
-seedDatabase(firebase);
+// if (location.hostname === "localhost") {
+//   db.useEmulator("127.0.0.1", 8080);
+// }
+// seedDatabase(firebase);
 const { FieldValue } = Firebase.firestore;
 
 
