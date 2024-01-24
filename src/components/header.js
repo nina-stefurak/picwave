@@ -25,6 +25,20 @@ export default function Header() {
                         <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
                             <svg className="w-8 mr-6 text-black-light cursor-pointer"
                             xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round"
+                                d="M4.75 7H7L8.75 4h6.5L17 7h2.25a2 2 0 012 2v9a2 2 0 01-2 2H4.75a2 2 0 01-2-2v-9a2 2 0 012-2zM12 15.25a3.25 3.25 0 100-6.5 3.25 3.25 0 000 6.5zM16.5 10.5h.01"/>
+                            </svg>
+                        </Link>
+
+
+                        <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
+                            <svg className="w-8 mr-6 text-black-light cursor-pointer"
+                            xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -37,6 +51,7 @@ export default function Header() {
                                 />
                             </svg>
                         </Link>
+                        
 
                         <button
                         type="button"

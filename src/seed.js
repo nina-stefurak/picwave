@@ -39,52 +39,48 @@ export function seedDatabase(firebase) {
       }
     ];
   
-    firebase.firestore().collection('users').limit(1).get()
-    .then(snapshot => {
-      if (snapshot.empty) {
-        // The 'users' collection is empty
-        console.log("'users' collection is empty. Adding users...");
+    // firebase.firestore().collection('users').limit(1).get()
+    // .then(snapshot => {
+    //   if (snapshot.empty) {
+    //     // The 'users' collection is empty
+    //     console.log("'users' collection is empty. Adding users...");
   
-        for (let k = 0; k < users.length; k++) {
-          firebase.firestore().collection('users').add(users[k])
-            .then(() => console.log(`User ${k} added`))
-            .catch(error => console.error("Error adding user: ", error));
-        }
-      } else {
-        // The 'users' collection does not exist
-        console.log("'users' collection already initialized.");
-      }
-    })
-    .catch(error => console.error("Error checking collection: ", error));
+    //     for (let k = 0; k < users.length; k++) {
+    //       firebase.firestore().collection('users').add(users[k])
+    //         .then(() => console.log(`User ${k} added`))
+    //         .catch(error => console.error("Error adding user: ", error));
+    //     }
+    //   } else {
+    //     // The 'users' collection does not exist
+    //     console.log("'users' collection already initialized.");
+    //   }
+    // })
+    // .catch(error => console.error("Error checking collection: ", error));
 
     firebase.firestore().collection('photos').limit(1).get()
     .then(snapshot => {
-      if (snapshot.empty) {
+      if (!snapshot.empty) {
         // The 'photos' collection is empty
         console.log("'photos' collection is empty. Adding users...");
   
-    for (let i = 1; i <= 3; ++i) {
+    for (let i = 1; i <= 6; ++i) {
       firebase
         .firestore()
         .collection('photos')
         .add({
           photoId: i,
-          userId: '2',
-          imageSrc: `/images/users/taylor/${i}.jpg`,
-          caption: 'Saint George and the Dragon',
+          userId: 'V8xVkn47IpToiRd6sUOuYtqSltc2',
+          imageSrc: `/images/users/soniacat/${i}.jpg`,
+          caption: 'Me!',
           likes: [],
           comments: [
             {
-              displayName: 'sali',
-              comment: 'Love this photo!'
-            },
-            {
-              displayName: 'snowball',
-              comment: 'Hi, cool picture!'
+              displayName: 'taylor',
+              comment: 'Like!'
             }
           ],
-          userLatitude: '40.7128°',
-          userLongitude: '74.0060°',
+          userLatitude: '40.7139°',
+          userLongitude: '74.0062°',
           dateCreated: Date.now()
         });
     }

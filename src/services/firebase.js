@@ -87,7 +87,9 @@ export async function getPhotos(userId, following) {
             if (photo.likes.includes(userId)) {
                 userLikedPhoto = true;
             }
+            //photo.userId = 2
             const user = await getUserByUserId(photo.userId);
+            //taylor
             const { username } = user[0];
             return { username, ...photo, userLikedPhoto };
         })

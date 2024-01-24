@@ -6,8 +6,8 @@ import LoggedInUserContext from '../context/logged-in-user';
 
 export default function Timeline() {
     const { user } = useContext(LoggedInUserContext);
-    // нам нужно полуить фото юзера, который залогинился
-  const { photos } = usePhotos(user);
+    
+    const { photos } = usePhotos(user);
   
   console.log('photos', photos);
   

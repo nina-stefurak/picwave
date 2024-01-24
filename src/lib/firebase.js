@@ -18,7 +18,7 @@ var db = firebase.firestore();
 // if (location.hostname === "localhost") {
 //   db.useEmulator("127.0.0.1", 8080);
 // }
-// seedDatabase(firebase);
+//seedDatabase(firebase);
 const { FieldValue } = Firebase.firestore;
 
 
